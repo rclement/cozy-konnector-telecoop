@@ -68,7 +68,7 @@ function parseDocuments(headers, documents) {
 
     const fileurl = docData.link
     const date = moment.utc(doc.formatted_created, 'DD/MM/YYYY')
-    const amount = 0.0  // how to retrieve the invoice amount?
+    const amount = 0.0 // how to retrieve the invoice amount?
     const currency = '€'
     const filename = `${date.format('YYYY-MM-DD')}_${vendor}_${amount.toFixed(
       2
