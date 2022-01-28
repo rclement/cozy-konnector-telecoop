@@ -89,10 +89,13 @@ function parseDocuments(headers, documents) {
 }
 
 function parsePdfAmountCurrency(entry, text) {
+  // find the net total amount line index
   const lines = text.split('\n')
   const ttcLineIdx = lines.findIndex(e => e === 'Total net TTC')
   if (ttcLineIdx > -1) {
+    // the net total amount data is the next line
     const rawAmount = lines[ttcLineIdx + 1].split(' ')
+    // format: from 'dd,dd €' to ['dd.dd', '€']
     const amount = parseFloat(rawAmount[0].replace(',', '.'))
     const currency = rawAmount[1]
     Object.assign(entry, {
