@@ -4,7 +4,7 @@
   "type": "konnector",
   "language": "node",
   "icon": "icon.png",
-  "slug": "thomann",
+  "slug": "telecoop",
   "source": "git@github.com:rclement/cozy-konnector-telecoop.git",
   "editor": "Romain Clement",
   "vendor_link": "https://telecoop.fr",
