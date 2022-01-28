@@ -43,7 +43,8 @@ async function start(fields, cozyParameters) {
     sourceAccount: this.accountId,
     sourceAccountIdentifier: fields.email,
     identifiers: [vendor],
-    contentType: 'application/pdf'
+    contentType: 'application/pdf',
+    processPdf: parsePdfAmountCurrency
   })
 }
 
@@ -68,11 +69,9 @@ function parseDocuments(headers, documents) {
 
     const fileurl = docData.link
     const date = moment.utc(doc.formatted_created, 'DD/MM/YYYY')
-    const amount = 0.0 // how to retrieve the invoice amount?
-    const currency = '€'
-    const filename = `${date.format('YYYY-MM-DD')}_${vendor}_${amount.toFixed(
-      2
-    )}${currency}_${doc.id}.pdf`
+    const amount = 0.0 // default empty amount to be retrieved with `processPdf`
+    const currency = '€' // default currency to be retrieved with `processPdf`
+    const filename = `${date.format('YYYY-MM-DD')}_${vendor}_${doc.ident}.pdf`
 
     return {
       vendor: vendor,
@@ -87,4 +86,18 @@ function parseDocuments(headers, documents) {
       }
     }
   })
+}
+
+function parsePdfAmountCurrency(entry, text) {
+  const lines = text.split('\n')
+  const ttcLineIdx = lines.findIndex(e => e === 'Total net TTC')
+  if (ttcLineIdx > -1) {
+    const rawAmount = lines[ttcLineIdx + 1].split(' ')
+    const amount = parseFloat(rawAmount[0].replace(',', '.'))
+    const currency = rawAmount[1]
+    Object.assign(entry, {
+      amount,
+      currency
+    })
+  }
 }
