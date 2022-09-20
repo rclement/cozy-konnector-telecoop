@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-- '12.22.12'
+- 12.22.12
 env:
   global:
   - MATTERMOST_CHANNEL=publication
-  # Token to access Cozy Registry, you should replace it with a token specific to this konnector
+  # REGISTRY TOKEN
   - secure: bmwioHtKPN2pjHZyB1TE4pO6LgD3PkYQySabfH3xYvUNtbDt0j+9kjq8j1KH/k0U3D6j+mFe8ZhIAHnIM+ywWcA+7soXV/cTg3106fEa1UW4knzijIPtO6V4/+4CWEUPMfl2VuKUla6yyyVX7XAb8QKVUx7VOgUiLldq/jeAAZ1loHk711FITx7WT/0bkJXbFCBekrZTFbZTlTaQqCTTP459/xrrCShdfCW2BWQEKwlv6Joa7eoYQ3It96Prk+UTsTyg0Sb5avlgAXtXJFWTKK/IXUIO5ROplql9wjJUwX1/M1CL9IvrKgQJnfaL5mK81d2DuhVRf/ADsYd5vLq+7UQ05BCjmzaXhjl95rR2/M1JTrp/XKGIpZCgLkZ6idHAMl2DLGjaRNwwLAtlnVp6ZO5XeAorO72IxhoemJ+zkfDEc+xspxbexgt9PpSkDJjfflcz0b8Uw89tzDBy7OzND2mHV9LtKY9iD84VyEsBTFJvL2NX6nwSMSihwm3xkBqa6CuthNKRApcmV7VKQNGNBpICziSmdtJK6C1aihHKiIvw6lal69x9Cqvu4NF4lu6pjOKc0EVvOxgdDrYymp7M70oOehViuiSwcPMbplqP+blGIN5SeIttyco9mSFZsA7tEJXWVml0o+ZWokCZRzzfB0rdS0xHoYeQnSHEbdC5oHk=
   # MATTERMOST_HOOK_URL
   - secure: CUSkW9mJLbsPvJOcmTCWzA0p4Q4ULkmIcHFQN0U+Ryf728otFrI3U8aKMdqkD+eGIvxwddr+Y8AsftYA4CtZHnKoelgamzZUZD1eon9HGQa69oNQbz3PmkAKnNcK/Ph/w9ufg1mzOKfO7Tk0h7k9E48X474wuN5xcbVCjczjjAs/95SWWFlR50z1q18tQ1YwEzkNRaVQ/YwHzKxJ62GLhbeqPkqjlp2U3LK7TZXQ5QgiKW16B4Cham87KkYCeJwMGNuAdCC5emj+4XJihapV8dX+hrye7PF6u3avOAHrtIyLO3bqgjuo0evpWb8YRkB3X3aD/lOflfOhP+3n4kmq/+D1ZrUo5lJDptl5iy8P2/w4EdTxftAIr2/quU/4QmMMpuE+Ly8NY/RB8ZNKmgX+x/74bp2MEiyKDabyqVlCBLItqt8gdJXeDCd/Z7MZcWPiHm5SGjMECrdQv/V8lo/CO2aq+1TNCnzJU5Bhh6Ij/y9s6dCWC6t3wxvFxNE7p/srgLbLJluXb/VZoh0ZpYGdxtjaoTkblvGaTWvwgzcCh0dEJC8cLV1ZLf/pC3zfIG7VfAbwlJpU1QGWhCni578p+s7nhjySkaZhdVPR9APHQhgk8hyUzbNEkmCY3lR2wdrwYDAeDc3m+Fjb9dJ/LmaeKAwq2foFvGyBKW2UExME1Pg=
@@ -31,9 +31,8 @@ deploy:
   on:
     tags: true
 before_install:
-# run the yarn travisDeployKey command to genrate this
-# - openssl aes-256-cbc -K $encrypted_0b21ecdcf920_key -iv $encrypted_0b21ecdcf920_iv
-#   -in github_deploy_key.enc -out /tmp/github_deploy_key -d
+- openssl aes-256-cbc -K $encrypted_8ebb1ef83f64_key -iv $encrypted_8ebb1ef83f64_iv
+  -in github_deploy_key.enc -out /tmp/github_deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/github_deploy_key
 - ssh-add /tmp/github_deploy_key
