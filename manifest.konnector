@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.0.0",
   "name": "Telecoop",
   "type": "konnector",
   "language": "node",
@@ -8,9 +8,7 @@
   "source": "git@github.com:konnectors/telecoop.git",
   "editor": "Romain Clement",
   "vendor_link": "https://telecoop.fr",
-  "categories": [
-    "telecom"
-  ],
+  "categories": ["telecom"],
   "fields": {
     "email": {
       "type": "email",
@@ -20,11 +18,7 @@
       "type": "password"
     }
   },
-  "folders": [
-    {
-      "defaultDir": "$administrative/$konnector/$account"
-    }
-  ],
+  "folders": [{"defaultDir": "$administrative/$konnector/$account"}],
   "data_types": [
     "bill"
   ],
@@ -47,10 +41,7 @@
     "name": "Romain Clement",
     "url": "https://romain-clement.net"
   },
-  "langs": [
-    "fr",
-    "en"
-  ],
+  "langs": ["fr", "en"],
   "locales": {
     "fr": {
       "short_description": "Récupère vos factures Telecoop",
