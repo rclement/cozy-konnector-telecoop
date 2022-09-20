@@ -1,0 +1,85 @@
+{
+  "version": "1.0.0",
+  "name": "Telecoop",
+  "type": "konnector",
+  "language": "node",
+  "icon": "icon.svg",
+  "slug": "telecoop",
+  "source": "git@github.com:konnectors/telecoop.git",
+  "editor": "Romain Clement",
+  "vendor_link": "https://telecoop.fr",
+  "categories": ["telecom"],
+  "fields": {
+    "email": {
+      "type": "email",
+      "identifier": true
+    },
+    "password": {
+      "type": "password"
+    }
+  },
+  "folders": [{"defaultDir": "$administrative/$konnector/$account"}],
+  "data_types": [
+    "bill"
+  ],
+  "screenshots": [],
+  "permissions": {
+    "bank operations": {
+      "type": "io.cozy.bank.operations"
+    },
+    "bills": {
+      "type": "io.cozy.bills"
+    },
+    "files": {
+      "type": "io.cozy.files"
+    },
+    "accounts": {
+      "type": "io.cozy.accounts"
+    }
+  },
+  "developer": {
+    "name": "Romain Clement",
+    "url": "https://romain-clement.net"
+  },
+  "langs": ["fr", "en"],
+  "locales": {
+    "fr": {
+      "short_description": "Récupère vos factures Telecoop",
+      "long_description": "Récupère la liste de vos factures sur le site de Telecoop",
+      "permissions": {
+        "bank operations": {
+          "description": "Utilisé pour relier les factures à des operations bancaires"
+        },
+        "bills": {
+          "description": "Utilisé pour sauver les données des factures"
+        },
+        "files": {
+          "description": "Utilisé pour sauvegarder les factures"
+        },
+        "accounts": {
+          "description": "Utilisé pour obtenir les données du compte"
+        }
+      }
+    },
+    "en": {
+      "short_description": "Fetch your bills from Telecoop",
+      "long_description": "Fetch a list of your bills from the Telecoop website",
+      "permissions": {
+        "bank operations": {
+          "description": "Required to link bank operations to bills"
+        },
+        "bills": {
+          "description": "Required to save the bills data"
+        },
+        "files": {
+          "description": "Required to save the bills"
+        },
+        "accounts": {
+          "description": "Required to get the account's data"
+        }
+      }
+    }
+  },
+  "banksTransactionRegExp": "\\btelecoop\\b",
+  "manifest_version": "2"
+}
