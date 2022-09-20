@@ -4,7 +4,7 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git@github.com:rclement/cozy-konnector-telecoop.git"
+    "url": "git@github.com:konnectors/telecoop.git"
   },
   "keywords": [],
   "author": "Cozy Cloud",
