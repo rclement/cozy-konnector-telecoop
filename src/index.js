@@ -69,9 +69,7 @@ async function authenticate(email, password) {
 
 function parseDocuments(headers, documents) {
   return documents.map(async doc => {
-    const docData = await request(`${invoicesUrl}/${doc.id}`, { headers })
-
-    const fileurl = docData.link
+    const fileurl = `${invoicesUrl}/${doc.id}`
     const date = moment.utc(doc.formatted_created, 'DD/MM/YYYY')
     const amount = 0.0 // default empty amount to be retrieved with `processPdf`
     const currency = '€' // default currency to be retrieved with `processPdf`
@@ -82,6 +80,8 @@ function parseDocuments(headers, documents) {
       date: date.toDate(),
       amount: amount,
       currency: currency,
+      contentType: 'application/pdf',
+      requestOptions: { headers }, // authorization header is required besides the cookie jar
       fileurl: fileurl,
       filename: filename,
       metadata: {
@@ -97,8 +97,8 @@ function parsePdfAmountCurrency(entry, text) {
   const lines = text.split('\n')
   const ttcLineIdx = lines.findIndex(e => e === 'Total net TTC')
   if (ttcLineIdx > -1) {
-    // the net total amount data is the next line
-    const rawAmount = lines[ttcLineIdx + 1].split(' ')
+    // the net total amount data is two lines after
+    const rawAmount = lines[ttcLineIdx + 2].split(' ')
     // format: from 'dd,dd €' to ['dd.dd', '€']
     const amount = parseFloat(rawAmount[0].replace(',', '.'))
     const currency = rawAmount[1]
