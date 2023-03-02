@@ -89,6 +89,9 @@
       }
     }
   },
+  "qualification_labels": [
+    "telecom_invoice"
+  ],
   "banksTransactionRegExp": "\\btelecoop\\b",
   "manifest_version": "2"
 }
