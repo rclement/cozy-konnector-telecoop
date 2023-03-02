@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.1.1",
   "name": "Telecoop",
   "type": "konnector",
   "language": "node",
@@ -89,6 +89,9 @@
       }
     }
   },
+  "qualification_labels": [
+    "telecom_invoice"
+  ],
   "banksTransactionRegExp": "\\btelecoop\\b",
   "manifest_version": "2"
 }
